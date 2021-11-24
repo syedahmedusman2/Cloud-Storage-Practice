@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:cloudstoragepractice/storageService.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final Storage storage = Storage();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,9 +36,10 @@ class _HomeScreenState extends State<HomeScreen> {
               
               return null;
             }
-              final path = results.files.single.path;
+              final pathname = results.files.single.path;
               // File Name
-              final finalname = results.files.single.name;
+              final filename = results.files.single.name;
+              storage.uploadFile(pathname, filename).then((value) => print("Done"));
               
           },
            child:const Text("Upload File"))
