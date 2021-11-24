@@ -19,4 +19,17 @@ class Storage{
     
   }
 
+  Future<firebase_storage.ListResult> listFiles()async{
+    firebase_storage.ListResult results = await storage.ref('test').listAll();
+    results.items.forEach((firebase_storage.Reference ref){
+      print('Found File, $ref');
+    });
+    return results;
+
+  }
+
+  // Future<String> downloadedUrl(String imageNam)async{
+
+  // }
+
 }
